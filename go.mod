@@ -1,4 +1,4 @@
-module grpcgeo/grpc
+module github.com/Wassermann1/grpcgeo
 
 go 1.24.0
 
