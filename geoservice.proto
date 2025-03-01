@@ -1,5 +1,5 @@
 syntax = "proto3";
-option go_package = "grpcgeo/grpcgeoservice";
+option go_package = "github.com/Wassermann1/grpcgeo";
 package grpcgeoservice;
 
 // Request for geocoding and reverse geocoding operations.
