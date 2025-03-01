@@ -1,0 +1,34 @@
+syntax = "proto3";
+option go_package = "grpcgeo/grpcgeoservice";
+package grpcgeoservice;
+
+// Request for geocoding and reverse geocoding operations.
+message Request {
+    oneof request_type {
+        string query = 1;       // Address query for GetAddress
+        Coordinates coords = 2; // Coordinates for GetGeocode
+    }
+}
+
+// Represents geographic coordinates.
+message Coordinates {
+    string latitude = 1;  // Latitude value
+    string longitude = 2; // Longitude value
+}
+
+message Address {
+    string city = 1;   // Corresponds to the City field in Go
+    string street = 2; // Corresponds to the Street field in Go
+    string house = 3;  // Corresponds to the House field in Go
+    string lat = 4;    // Corresponds to the Lat field in Go
+    string lon = 5;    // Corresponds to the Lon field in Go
+}
+
+message AddressListResponse {
+    repeated Address addresses = 1;
+}
+
+service Geocode {
+    rpc GetAddress(Request) returns (AddressListResponse) {}
+    rpc GetGeocode(Request) returns (AddressListResponse) {}
+}
